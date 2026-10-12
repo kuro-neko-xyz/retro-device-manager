@@ -26,7 +26,7 @@ async function seedDatabase() {
       CREATE TABLE IF NOT EXISTS models (
         id SMALLSERIAL PRIMARY KEY,
         name VARCHAR(255),
-        brand INTEGER,
+        brand SMALLINT,
         FOREIGN KEY (brand) REFERENCES brands(id)
       )
     `);
@@ -35,8 +35,18 @@ async function seedDatabase() {
       CREATE TABLE IF NOT EXISTS devices (
         id SMALLSERIAL PRIMARY KEY,
         alias VARCHAR(255),
-        model INTEGER,
+        model SMALLINT,
+        image_url VARCHAR(255),
+        default_color CHAR(7) CHECK (default_color ~* '^#[0-9a-f]{6}$'),
         FOREIGN KEY (model) REFERENCES models(id)
+      );
+    `);
+
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS events (
+        device_id SMALLINT,
+        date_used DATE,
+        color CHAR(7) CHECK (color ~* '^#[0-9a-f]{6}$')
       );
     `);
 
