@@ -1,9 +1,8 @@
 .table {
-  min-width: 90%;
   margin: 0 auto;
 }
 
-.tableHeader {
+.tableHeaderContent {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -14,6 +13,8 @@
   font-size: 1.5rem;
   vertical-align: middle;
   user-select: none;
+  min-width: 200px;
+  max-width: 200px;
 }
 
 .tableHeaderButton {
