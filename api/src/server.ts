@@ -16,6 +16,35 @@ fastify.register(postgres, {
   port: Number(process.env.PG_PORT),
 });
 
+fastify.get("/api/v1/devices", async (request, response) => {
+  const client = await fastify.pg.connect();
+
+  const { rows } = await client.query(
+    `
+      SELECT
+        devices.id AS id,
+        devices.alias AS alias,
+        devices.image_url AS image_url,
+        devices.default_color AS default_color,
+        models.name AS model,
+        brands.name AS brand
+      FROM
+        devices
+      JOIN
+        models
+      ON
+        devices.model = models.id
+      JOIN
+        brands
+      ON
+        models.brand = brands.id;`,
+  );
+
+  client.release();
+
+  return rows;
+});
+
 fastify.post("/api/v1/events", async (request, response) => {
   const { body } = request;
 

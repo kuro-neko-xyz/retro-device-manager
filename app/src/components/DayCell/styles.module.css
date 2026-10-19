@@ -5,6 +5,7 @@
   border-width: 1px;
   border-color: white;
   vertical-align: top;
+  position: relative;
 }
 
 .dateLabel {

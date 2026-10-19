@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import styles from "./styles.module.css";
+import AddEventModal from "../AddEventModal";
 
 interface DayCellProps {
   date: Date;
@@ -8,6 +9,7 @@ interface DayCellProps {
 const DayCell: FC<DayCellProps> = ({ date }) => {
   return (
     <td className={styles.dayCell}>
+      <AddEventModal date={date} />
       <p className={styles.dateLabel}>{date.getDate()}</p>
     </td>
   );
