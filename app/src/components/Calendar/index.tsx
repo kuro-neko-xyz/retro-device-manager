@@ -63,7 +63,18 @@ const Calendar = () => {
             </th>
           </tr>
         </thead>
-        <tbody>{generateWeeks()}</tbody>
+        <tbody>
+          <tr>
+            <td>Sunday</td>
+            <td>Monday</td>
+            <td>Tuesday</td>
+            <td>Wednesday</td>
+            <td>Thursday</td>
+            <td>Friday</td>
+            <td>Saturday</td>
+          </tr>
+          {generateWeeks()}
+        </tbody>
       </table>
     </div>
   );

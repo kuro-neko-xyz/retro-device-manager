@@ -8,7 +8,7 @@ interface DayCellProps {
 const DayCell: FC<DayCellProps> = ({ date }) => {
   return (
     <td className={styles.dayCell}>
-      <p>{date.toDateString()}</p>
+      <p className={styles.dateLabel}>{date.getDate()}</p>
     </td>
   );
 };
